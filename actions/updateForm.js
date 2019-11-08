@@ -36,10 +36,12 @@ module.exports = class UpdateForm extends Action {
             }
             formData[key] = data.params[key]
         })
-        console.log(formData)
-        data.response = {formData}
-
         api.FormData = formData
-        await api.chatRoom.broadcast(data.connection, 'defaultRoom', formData)
+
+        const roomStatus = await api.chatRoom.roomStatus(api.FormDataRoom)
+        const response = {formData, roomStatus}
+        console.log(response)
+        data.response = response
+        await api.chatRoom.broadcast(data.connection, api.FormDataRoom, response)
     }
 }

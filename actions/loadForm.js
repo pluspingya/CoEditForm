@@ -17,7 +17,9 @@ module.exports = class LoadForm extends Action {
 
     async run (data) {
         const formData = api.FormData
-        console.log(formData)
-        data.response = {formData}
+        const roomStatus = await api.chatRoom.roomStatus(api.FormDataRoom)
+        const response = {formData, roomStatus}
+        console.log(response)
+        data.response = response
     }
 }
