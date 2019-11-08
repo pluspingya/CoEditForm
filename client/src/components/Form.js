@@ -6,6 +6,7 @@ import * as actions from '../actions'
 
 import Select from './elements/Select'
 import Chips from './elements/Chips'
+import CoUsers from './CoUsers'
 
 const TITLE_ID = 'title'
 const DESCRIPTION_ID = 'select'
@@ -64,6 +65,7 @@ class Form extends Component {
                         <a href="/" className="brand-logo">Co-edit Form</a>                        
                     </div>
                 </nav>
+                <CoUsers data={this.props.roomStatus}/>
                 <div className="row">
                     <div className="col s12 m6">
                         <label htmlFor={TITLE_ID}>Title</label>
@@ -113,7 +115,8 @@ class Form extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        formData: getFormData(state)
+        formData: getFormData(state),
+        roomStatus: state.form && state.form.roomStatus
     }
 }
 
