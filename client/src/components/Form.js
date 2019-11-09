@@ -51,10 +51,9 @@ class Form extends Component {
                 console.log('Error:', err)
             }else {
                 console.log(details)
-                this.client.roomAdd('defaultRoom', res => {
+                this.client.roomAdd('formDataRoom', res => {
                     if (res.status !== 'OK') {
-                        console.log('Not OK!', res)
-                        return
+                        return console.log('Not OK!', res)                        
                     }
                     this.props.loadFormWS(this.client)
                 })

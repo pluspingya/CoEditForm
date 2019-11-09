@@ -16,7 +16,7 @@ export default class Select extends Component {
         return (
             <option key={index} 
                 value={item.value} 
-                disabled={this.disabled===true}>
+                disabled={item.disabled===true}>
                 {item.label || item.value}
             </option>
         )
