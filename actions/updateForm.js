@@ -1,4 +1,5 @@
 const {Action, api} = require('actionhero')
+const {formDataRoom, updateFormData} = require('../models/FormData')
 
 module.exports = class UpdateForm extends Action {
     constructor () {
@@ -28,20 +29,15 @@ module.exports = class UpdateForm extends Action {
     }
 
     async run (data) {
-        const formData = api.FormData
-        const keys = ['title', 'type', 'description', 'tags']
-        keys.forEach(key => {
-            if (data.params[key] === undefined) {
-                return
-            }
-            formData[key] = data.params[key]
+        const formData = await updateFormData({
+            title: data.params.title,
+            type: data.params.type,
+            description: data.params.description,
+            tags: data.params.tags
         })
-        api.FormData = formData
-
-        const roomStatus = await api.chatRoom.roomStatus(api.FormDataRoom)
+        const roomStatus = await api.chatRoom.roomStatus(formDataRoom)
         const response = {formData, roomStatus}
-        console.log(response)
         data.response = response
-        await api.chatRoom.broadcast(data.connection, api.FormDataRoom, response)
+        await api.chatRoom.broadcast(data.connection, formDataRoom, response)
     }
 }

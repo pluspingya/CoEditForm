@@ -8,9 +8,10 @@
   },
   "dependencies": {
     "actionhero": "20.0.0",
-    "ws": "latest",
+    "async": "^3.1.0",
     "ioredis": "latest",
-    "winston": "latest"
+    "winston": "latest",
+    "ws": "latest"
   },
   "devDependencies": {
     "jest": "latest",

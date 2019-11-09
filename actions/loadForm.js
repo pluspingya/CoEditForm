@@ -1,4 +1,5 @@
 const {Action, api} = require('actionhero')
+const {formDataRoom, getFormData} = require('../models/FormData')
 
 module.exports = class LoadForm extends Action {
     constructor () {
@@ -16,10 +17,9 @@ module.exports = class LoadForm extends Action {
     }
 
     async run (data) {
-        const formData = api.FormData
-        const roomStatus = await api.chatRoom.roomStatus(api.FormDataRoom)
+        const formData = await getFormData()
+        const roomStatus = await api.chatRoom.roomStatus(formDataRoom)
         const response = {formData, roomStatus}
-        console.log(response)
         data.response = response
     }
 }
