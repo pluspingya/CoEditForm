@@ -6,8 +6,7 @@ cache/*
 coverage/*
 node_modules/*
 locales/test-env-*
-public/javascript/ActionheroWebsocketClient.js
-public/javascript/ActionheroWebsocketClient.min.js
+public/*
 
 # Node / NPM
 npm-debug.log
