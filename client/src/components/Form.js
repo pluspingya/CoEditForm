@@ -44,16 +44,15 @@ class Form extends Component {
         this.client.on('reconnect', () => console.log('reconnect'))
         this.client.on('reconnecting', () => console.log('reconnecting'))
 
-        this.client.on('say', (msg) => this.props.storeDispatch(msg))
+        this.client.on('say', (msg) => this.props.updateFormDispatch(msg))
 
         this.client.connect((err, details) => {
             if (err != null) {
                 console.log('Error:', err)
             }else {
-                console.log(details)
                 this.client.roomAdd('formDataRoom', res => {
                     if (res.status !== 'OK') {
-                        return console.log('Not OK!', res)                        
+                        return console.log(`Not OK! here's why:`, res)     
                     }
                     this.props.loadFormWS(this.client)
                 })
