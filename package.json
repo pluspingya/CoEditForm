@@ -1,7 +1,7 @@
 {
-  "author": "YOU <YOU@example.com>",
-  "name": "my_actionhero_project",
-  "description": "my actionhero project",
+  "author": "Plus Pingya <pluspingya@gmail.com>",
+  "name": "CoEditForm",
+  "description": "Collaborative Editing Form Demo powered by ReactJS and ActionheroJS",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.0.0"
