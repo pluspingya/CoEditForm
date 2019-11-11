@@ -14,18 +14,27 @@
     "ws": "latest"
   },
   "devDependencies": {
+    "concurrently": "^5.0.0",
     "jest": "latest",
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.0",
     "standard": "latest"
   },
   "scripts": {
     "start": "actionhero start",
-    "actionhero": "actionhero",
+    "server": "npm run start",
     "pretest": "standard",
-    "test": "jest"
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "clean": "rimraf public/*",
+    "cleanbuild": "rimraf client/build/*",
+    "copybuild": "ncp client/build/ public/",
+    "build": "npm run clean && npm run cleanbuild && npm run build --prefix client && npm run copybuild"
   },
   "standard": {
     "ignore": [
-      "public/javascript/ActionheroWebsocketClient.*"
+      "public/*",
+      "client/*"
     ],
     "globals": [
       "describe",
